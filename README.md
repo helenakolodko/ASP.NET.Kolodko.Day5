@@ -1,4 +1,4 @@
-# ASP.NET.Kolodko.Day5
+# ASP.NET.Day5
 
 ## Задание 1
 Разработать класс Book:
