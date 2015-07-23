@@ -9,7 +9,6 @@ namespace Task1.Library
     {
         private ILogger logger;
         private string path;
-        private BinaryFormatter formatter = new BinaryFormatter();
         private List<Book> list = new List<Book>();
 
         public FileBookListService(string path)
@@ -40,8 +39,8 @@ namespace Task1.Library
             if (!Contains(book))
             {
                 list.Add(book);
+                AppendBookToFile(book);
                 logger.Debug("Book added.");
-                WriteListToFile();
             }
             else
                 logger.Debug("Trying to add a book that is already in the storage.");
@@ -152,20 +151,49 @@ namespace Task1.Library
             WriteListToFile();
         }
 
+        private void AppendBookToFile(Book book)
+        {
+            Stream fileStream = File.Open(path, FileMode.Append, FileAccess.Write);
+            using (BinaryWriter output = new BinaryWriter(fileStream))
+            {
+                output.Write(book.Author);
+                output.Write(book.Title);
+                output.Write(book.Year);
+                output.Write(book.Pages);
+            }
+        }
+
+
         private void WriteListToFile()
         {
-            using (Stream output = File.Open(path, FileMode.OpenOrCreate, FileAccess.Write))
+            Stream fileStream = File.Open(path, FileMode.Truncate, FileAccess.Write);
+            using (BinaryWriter output = new BinaryWriter(fileStream))
             {
-                formatter.Serialize(output, list);
+                foreach (var book in list)
+                {
+                    output.Write(book.Author);
+                    output.Write(book.Title);
+                    output.Write(book.Year);
+                    output.Write(book.Pages);
+                }
             }
         }
 
         private void ReadListFromFile()
         {
-            using (Stream input = File.Open(path, FileMode.OpenOrCreate, FileAccess.Read))
+            Stream fileStream = File.Open(path, FileMode.OpenOrCreate, FileAccess.Read);
+            using (BinaryReader input = new BinaryReader(fileStream))
             {
-                if (input.Length > 0)
-                    list = (List<Book>) formatter.Deserialize(input);
+                list.Clear();
+                while (input.BaseStream.Position < input.BaseStream.Length)
+                {
+                    Book book = new Book();
+                    book.Author = input.ReadString();
+                    book.Title = input.ReadString();
+                    book.Year = input.ReadInt32();
+                    book.Pages = input.ReadInt32();
+                    list.Add(book);
+                }
             }
         }
     }
