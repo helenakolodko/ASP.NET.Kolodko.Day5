@@ -11,11 +11,17 @@ namespace Task1.Library
         public string Author { get; set; }
         public string Title { get; set; }
         public int Year { get; set; }
-        public string Language { get; set; }
+        public int Pages { get; set; }
 
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            int result = Author.GetHashCode() * 31;
+            result += Title.GetHashCode();
+            result *= 31;
+            result += Year;
+            result *= 31;
+            result += Pages;
+            return result;
         }
 
         public bool Equals(Book other)
@@ -49,8 +55,18 @@ namespace Task1.Library
                 return 0;
             if (ReferenceEquals(other, null))
                 return 1;
-            // TODO: 
-                
+            int result = String.Compare(Author, other.Author, true);
+            if (result == 0)
+            {
+                result = String.Compare(Title, other.Title, true);
+                if (result == 0)
+                {
+                    result = Year.CompareTo(other.Year);
+                    if (result == 0)
+                        result = Pages.CompareTo(other.Pages);
+                }
+            }
+            return result;
         }
     }
 }
