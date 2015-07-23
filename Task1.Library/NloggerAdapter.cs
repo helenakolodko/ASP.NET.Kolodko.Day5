@@ -1,26 +1,40 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NLog;
 
 namespace Task1.Library
 {
     class NloggerAdapter : ILogger
     {
+        private Logger logger = new Logger();
+
         public void Debug(string message)
         {
-            throw new NotImplementedException();
+            logger.Debug(message);
+        }
+
+        public void Warn(string message)
+        {
+            logger.Warn(message);
         }
 
         public void Error(string message)
         {
-            throw new NotImplementedException();
+            logger.Error(message);
+        }
+
+        public void Error(string message, Exception exception)
+        {
+            logger.Error(message, exception)
         }
 
         public void Fatal(string message)
         {
-            throw new NotImplementedException();
+            logger.Error(message);
+        }
+
+        public void Fatal(string message, Exception exception)
+        {
+            logger.Fatal(message, exception);
         }
     }
 }

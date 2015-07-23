@@ -27,12 +27,42 @@ namespace Task1.Library
             throw new NotImplementedException();
         }
 
-        public void FindByTag(BookTag tag, string name)
+        public Book[] FindByTitle(string title)
         {
             throw new NotImplementedException();
         }
 
-        public void SortBookByTag(BookTag tag)
+        public void SortBookByTitle()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Book[] FindByAuthor(string author)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SortBookByAuthor()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Book[] FindByYear(int Year)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SortBookByYear()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Book[] FindByLanguage(string language)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SortBookByLanguage()
         {
             throw new NotImplementedException();
         }

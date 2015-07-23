@@ -20,17 +20,37 @@ namespace Task1.Library
 
         public bool Equals(Book other)
         {
-            throw new NotImplementedException();
+            if (ReferenceEquals(other, null))
+                return false;
+            if (ReferenceEquals(other, this))
+                return true;
+            if (Author != other.Author || Title != other.Title || 
+                Year != other.Year || Language != other.Language)
+                return false;
+            return true;
         }
 
         public override bool Equals(object obj)
         {
-            return base.Equals(obj);
+            if (ReferenceEquals(other, null))
+                return false;
+            if (ReferenceEquals(other, this))
+                return true;
+            Book book = obj as Book;
+            if (ReferenceEquals(book, null))
+                return false;
+            else
+                return Equals(book);
         }
 
         public int CompareTo(Book other)
         {
-            throw new NotImplementedException();
+            if (ReferenceEquals(other, this))
+                return 0;
+            if (ReferenceEquals(other, null))
+                return 1;
+            // TODO: 
+                
         }
     }
 }

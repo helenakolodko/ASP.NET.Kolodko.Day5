@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Book.cs" />
-    <Compile Include="BookTag.cs" />
     <Compile Include="FileBookListService.cs" />
     <Compile Include="IBookListService.cs" />
     <Compile Include="ILogger.cs" />
