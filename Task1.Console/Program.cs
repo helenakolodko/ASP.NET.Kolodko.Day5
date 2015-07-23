@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using Task1.Library;
 
@@ -6,6 +7,8 @@ namespace Task1.Console
 {
     class Program
     {
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
+
         static void Main(string[] args)
         {
             IBookListService s = new FileBookListService("list.bin");
@@ -13,7 +16,7 @@ namespace Task1.Console
             s.AddBook(new Book() { Title = "To Kill a Mockingbird", Author = "Harper Li", Year = 1995, Pages = 377 });
             s.AddBook(new Book() { Title = "Solaris", Author = "Stanislav Lem", Year = 1995, Pages = 277 });
 
-            s.RemoveBook(new Book() { Title = "To Kill a Mockingbird", Author = "Harper Li", Year = 1995, Pages = 377 });
+            s.RemoveBook(new Book() { Title = "Solaris", Author = "Stanislav Lem", Year = 1995, Pages = 277 });
         }
     }
 }

@@ -43,6 +43,8 @@ namespace Task1.Library
                 logger.Debug("Book added.");
                 WriteListToFile();
             }
+            else
+                logger.Debug("Trying to add a book that is already in the storage.");
         }
 
         public void RemoveBook(Book book)

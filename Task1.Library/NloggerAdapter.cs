@@ -5,8 +5,7 @@ namespace Task1.Library
 {
     public class NloggerAdapter : ILogger
     {
-        private Logger logger = LogManager.GetCurrentClassLogger();
-
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         public void Debug(string message)
         {
             logger.Debug(message);
