@@ -9,11 +9,15 @@ namespace Task1.Library
     [Serializable]
     public class Book : IEquatable<Book>, IComparable<Book>
     {
-        public string Author { get; set; }
-        public string Title { get; set; }
-        public int Year { get; set; }
-        public int Pages { get; set; }
-
+        private string author;
+        private string title;
+        private int year;
+        private int pages
+        public string Author { get{return author;} set{author = value;} }
+        public string Title { get{return title;} set{if (string.IsNullOrEmpty(value)) throw new ArgumentOutOfRangeException(); else title = value;} }
+        public int Year { get{return year;} set{if (value < 0) throw new ArgumentOutOfRangeException(); else year = value;} }
+        public int Pages { get{return pages;} set{if (value < 1) throw new ArgumentOutOfRangeException(); else pages = value;} }
+       
         public override int GetHashCode()
         {
             int result = Author.GetHashCode() * 31 + Title.GetHashCode();
