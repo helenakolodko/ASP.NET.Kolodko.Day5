@@ -3,9 +3,9 @@ using NLog;
 
 namespace Task1.Library
 {
-    class NloggerAdapter : ILogger
+    public class NloggerAdapter : ILogger
     {
-        private Logger logger = new Logger();
+        private Logger logger = LogManager.GetCurrentClassLogger();
 
         public void Debug(string message)
         {
@@ -24,17 +24,7 @@ namespace Task1.Library
 
         public void Error(string message, Exception exception)
         {
-            logger.Error(message, exception)
-        }
-
-        public void Fatal(string message)
-        {
-            logger.Error(message);
-        }
-
-        public void Fatal(string message, Exception exception)
-        {
-            logger.Fatal(message, exception);
+            logger.Error(exception, message);
         }
     }
 }

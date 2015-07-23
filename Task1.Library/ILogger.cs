@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace Task1.Library
 {
-    interface ILogger
+    public interface ILogger
     {
         void Debug(string message);
         void Warn(string message);
         void Error(string message);
         void Error(string message, Exception exception);
-        void Fatal(string message);
-        void Fatal(string message, Exception exception);
     }
 }

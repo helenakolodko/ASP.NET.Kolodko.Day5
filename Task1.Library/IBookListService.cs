@@ -1,18 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Task1.Library
 {
-    interface IBookListService
+    public interface IBookListService
     {
         void AddBook(Book book);
         void RemoveBook(Book book);
-        Book[] FindByTitle(string title);
+        List<Book> FindByTitle(string title);
         void SortBookByTitle();
-        Book[] FindByAuthor(string author);
+        List<Book> FindByAuthor(string author);
         void SortBookByAuthor();
-        Book[] FindByYear(int Year);
+        List<Book> FindByYear(int year);
         void SortBookByYear();
-        Book[] FindByLanguage(string language);
-        void SortBookByLanguage();
+        List<Book> FindByPages(int pages);
+        void SortBookByPages();
     }
 }

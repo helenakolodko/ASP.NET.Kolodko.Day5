@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task1.Library
 {
+    [Serializable]
     public class Book : IEquatable<Book>, IComparable<Book>
     {
         public string Author { get; set; }
@@ -15,8 +16,7 @@ namespace Task1.Library
 
         public override int GetHashCode()
         {
-            int result = Author.GetHashCode() * 31;
-            result += Title.GetHashCode();
+            int result = Author.GetHashCode() * 31 + Title.GetHashCode();
             result *= 31;
             result += Year;
             result *= 31;
@@ -31,16 +31,16 @@ namespace Task1.Library
             if (ReferenceEquals(other, this))
                 return true;
             if (Author != other.Author || Title != other.Title || 
-                Year != other.Year || Language != other.Language)
+                Year != other.Year || Pages != other.Pages)
                 return false;
             return true;
         }
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(other, null))
+            if (ReferenceEquals(obj, null))
                 return false;
-            if (ReferenceEquals(other, this))
+            if (ReferenceEquals(obj, this))
                 return true;
             Book book = obj as Book;
             if (ReferenceEquals(book, null))
