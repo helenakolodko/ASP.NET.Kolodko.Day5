@@ -74,7 +74,7 @@ namespace Task1.Library
 
         public List<Book> FindByTitle(string title)
         {
-            return FindAll((Book b) => String.Equals(Title, other.Title, StringComparison.CurrentCultureIgnoreCase));
+            return FindAll((Book b) => String.Equals(b.Title, title, StringComparison.CurrentCultureIgnoreCase));
         }
 
         public void SortBookByTitle()
@@ -84,7 +84,7 @@ namespace Task1.Library
 
         public List<Book> FindByAuthor(string author)
         {
-            return FindAll((Book b) => String.Equals(Title, other.Title, StringComparison.CurrentCultureIgnoreCase));
+            return FindAll((Book b) => String.Equals(b.Author, author, StringComparison.CurrentCultureIgnoreCase));
         }
 
         public void SortBookByAuthor()
