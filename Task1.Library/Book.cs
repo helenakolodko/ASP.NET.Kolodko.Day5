@@ -55,22 +55,11 @@ namespace Task1.Library
 
         public int CompareTo(Book other)
         {
-            if (ReferenceEquals(other, this))
+            if (Equals(other))
                 return 0;
             if (ReferenceEquals(other, null))
                 return 1;
-            int result = String.Compare(Author, other.Author, true);
-            if (result == 0)
-            {
-                result = String.Compare(Title, other.Title, true);
-                if (result == 0)
-                {
-                    result = Year.CompareTo(other.Year);
-                    if (result == 0)
-                        result = Pages.CompareTo(other.Pages);
-                }
-            }
-            return result;
+            return String.Compare(Title, other.Title, true);
         }
     }
 }
